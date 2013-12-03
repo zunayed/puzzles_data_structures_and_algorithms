@@ -3,7 +3,6 @@
 # of the string to hold the additional characters, and that you 
 # are given the "true" length of the string. 
 
-
 #one way
 def replaceWhiteSpace(string):
 	new_string = ''
