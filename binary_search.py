@@ -21,18 +21,20 @@ def binarySearch(list, item):
 
 
 #binary search recursivly 
+# O(log n)
 def recursiveBinarySearch(list, item):
 	if len(list) == 0:
 		return False
 	else:
-		# middle = len(list) // 2
+		middle = len(list) // 2
 		# print list[middle]
-		print item
 
 		if item == list[middle]:
 			return True
 		else:
 			if item < list[middle]:
+				#slice operator in Python is actually O(k).
+				#We can just pass in start and end points like the first example
 				return recursiveBinarySearch(list[:middle], item)
 			else:
 				return recursiveBinarySearch(list[middle + 1:], item)
