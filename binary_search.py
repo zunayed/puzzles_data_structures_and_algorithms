@@ -19,7 +19,6 @@ def binarySearch(list, item):
 
 	return found
 
-
 #binary search recursivly 
 # O(log n)
 def recursiveBinarySearch(list, item):
