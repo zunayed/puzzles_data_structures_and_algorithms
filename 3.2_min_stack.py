@@ -41,4 +41,3 @@ stack.push(533)
 stack.push(521)
 
 print stack.getMin()
-
