@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self,initdata):
+    def __init__(self, initdata):
         self.data = initdata
         self.next = None
 
@@ -9,63 +9,77 @@ class Node:
     def getNext(self):
         return self.next
 
-    def setData(self,newdata):
+    def setData(self, newdata):
         self.data = newdata
 
-    def setNext(self,newnext):
+    def setNext(self, newnext):
         self.next = newnext
 
 
 class UnorderedList:
-
     def __init__(self):
         self.head = None
 
     def isEmpty(self):
-        return self.head == None
+        return self.head is None
 
-    def add(self,item):
+    def add(self, item):
         temp = Node(item)
         temp.setNext(self.head)
         self.head = temp
 
     def size(self):
-        current = self.head
         count = 0
-        while current != None:
-            count = count + 1
-            current = current.getNext()
+        temp = self.head
+        while temp is not None:
+            count += 1
+            temp = temp.getNext()
 
         return count
 
-    def search(self,item):
-        current = self.head
+    def search(self, item):
         found = False
-        while current != None and not found:
+        current = self.head
+        while current is not None and not found:
             if current.getData() == item:
-                found = True
-            else:
-                current = current.getNext()
+                return current.getData()
+            current = current.getNext()
 
         return found
 
-    def remove(self,item):
+    # def remove(self, item):
+    #     current = self.head
+    #     previous = None
+    #     found = False
+    #     while not found:
+    #         if current.getData() == item:
+    #             found = True
+    #         else:
+    #             previous = current
+    #             current = current.getNext()
+
+    #     if previous is None:
+    #         self.head = current.getNext()
+    #     else:
+    #         previous.setNext(current.getNext())
+
+    def remove(self, item):
         current = self.head
-        previous = None
-        found = False
-        while not found:
-            if current.getData() == item:
-                found = True
+        if current.getData() == item:
+            self.head = self.head.getNext()
+
+        while current.getNext() is not None:
+            print 'test'
+            next = current.getNext()
+            print next.getData()
+            if next.getData() == item:
+                current.setNext(next.getNext())
+                break
             else:
-                previous = current
                 current = current.getNext()
 
-        if previous == None:
-            self.head = current.getNext()
-        else:
-            previous.setNext(current.getNext())
-
 mylist = UnorderedList()
+print mylist.isEmpty()
 
 mylist.add(31)
 mylist.add(77)
@@ -78,14 +92,19 @@ print(mylist.size())
 print(mylist.search(93))
 print(mylist.search(100))
 
-mylist.add(100)
-print(mylist.search(100))
-print(mylist.size())
-
-mylist.remove(54)
-print(mylist.size())
 mylist.remove(93)
-print(mylist.size())
-mylist.remove(31)
-print(mylist.size())
+print mylist.size()
 print(mylist.search(93))
+
+
+# mylist.add(100)
+# print(mylist.search(100))
+# print(mylist.size())
+
+# mylist.remove(54)
+# print(mylist.size())
+# mylist.remove(93)
+# print(mylist.size())
+# mylist.remove(31)
+# print(mylist.size())
+# print(mylist.search(93))
