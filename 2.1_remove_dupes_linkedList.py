@@ -82,4 +82,33 @@ class UnorderedList:
                 current = current.getNext()
 
 
+def removeDupes(list):
+    #build a hashtable
+    if list.head is not None:
+        current = list.head
+        dictionary = {current.getData(): True}
+
+        while current.getNext() is not None:
+            next = current.getNext()
+            if next.getData() in dictionary:
+                current.setNext(next.getNext())
+            else:
+                dictionary[next.getData()] = True
+                current = next
+
+
+
 mylist = UnorderedList()
+
+mylist.add(2)
+mylist.add(2)
+mylist.add(7)
+mylist.add(7)
+mylist.add(7)
+mylist.add(7)
+
+print mylist.size()
+
+removeDupes(mylist)
+
+print mylist.size()
