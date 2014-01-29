@@ -3,7 +3,9 @@
 
 
 def reverse(string):
-    pass
+    if string is not "":
+        return string[-1:] + reverse(string[:-1])
+    else:
+        return ""
 
 print reverse('zunayed')
-
