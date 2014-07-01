@@ -1,42 +1,45 @@
+#include <cstdlib>
 #include <iostream>
 
 using namespace std;
 
+
 class List{
 private:
-    struct node
-    {
+    typedef struct node{
         int data;
         node* next_node;   
-    };
+    }* nodePtr;
 
-    node* head;
-    node* current;
-    node* temp;
+    nodePtr head;
+    nodePtr current;
+    nodePtr temp;
+
 public:
     List();
     void PrintList(); 
     void AddNode(int add_data);
-    void DeleteNode(int del_data);
+    // void DeleteNode(int del_data);
 };
 
-List(){
+
+List::List(){
     head = NULL;
     current = NULL;
     temp = NULL;
 }
 
-void AddNode(int data){
+void List::AddNode(int data){
     node* n = new node;
-    n->next = NULL;
-    m->data = data;
+    n->next_node = NULL;
+    n->data = data;
 
     if(head != NULL){
         current = head;
-        while(current->next != NULL){
-            current = current->next;
+        while(current->next_node != NULL){
+            current = current->next_node;
         }
-        current->next = n;
+        current->next_node = n;
 
     }
     else{
@@ -44,11 +47,11 @@ void AddNode(int data){
     }
 }
 
-void PrintList(){
+void List::PrintList(){
     current = head;
     while(current != NULL){
-        count << current->data << endl;
-        current = current->next;
+        cout << current->data << endl;
+        current = current->next_node;
     }
 }
 
