@@ -39,7 +39,6 @@ void List::AddNode(int data){
             current = current->next_node;
         }
         current->next_node = n;
-
     }
     else{
         head = n;
@@ -96,6 +95,5 @@ int main(int argc, char** argv){
     Test.PrintList();
 
     Test.DeleteNode(5);
-    Test.PrintList();
-
+    Test.PrintList();   
 }
