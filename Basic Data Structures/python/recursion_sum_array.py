@@ -6,11 +6,10 @@
 
 
 def sum(array, index):
-if index == len(array):
+    if index == len(array):
         return 0
     else:
         return array[index] + sum(array, index + 1)
 
 
 print sum([1, 2, 3, 4, 5], 0)
-

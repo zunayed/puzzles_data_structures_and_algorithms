@@ -1,4 +1,4 @@
-#to reverse the characters in a string.
+#check if parentheses are closed using a stack
 import unittest
 
 
@@ -56,7 +56,6 @@ class MyTest(unittest.TestCase):
         self.assertEqual(parChecker('[{()]'), False)
         self.assertEqual(parChecker('((())'), False)
         self.assertEqual(parChecker('((()))'), True)
-
 
 
 if __name__ == '__main__':
