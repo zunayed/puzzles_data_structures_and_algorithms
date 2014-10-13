@@ -1,4 +1,8 @@
+import unittest
+
+
 class Stack:
+
     """
     LIFO, last-in first-out
     """
@@ -29,3 +33,24 @@ class Stack:
 
     def size(self):
         return len(self.items)
+
+
+class MyTest(unittest.TestCase):
+
+    def setUp(self):
+        self.stack = Stack()
+
+    def testPushStack(self):
+        self.stack.push(4)
+        self.stack.push(3)
+        self.stack.push(2)
+
+        self.assertEqual(self.stack.items, [4, 3, 2])
+
+    def testPopStack(self):
+        self.stack.push(4)
+        self.assertEqual(self.stack.pop(), 4)
+
+
+if __name__ == '__main__':
+    unittest.main()
