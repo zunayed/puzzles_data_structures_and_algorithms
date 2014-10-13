@@ -7,5 +7,7 @@ Practicing w/ data structures in C++/Go/Python
 | ------------- | -----:| ------:| ------:|
 | Linked List   | No    | Done   |Done    |
 | Hash Table    | -     | -      |-       |
-| Stack/Queues  | -     | -      |-       |
+| Stack         | -     | Done   |-       |
+| Queues        | -     | -      |-       |
 | Tree          | -     | -      |-       |
+
