@@ -5,13 +5,13 @@ Modified linkedlist to include hash_value
 
 class Node:
 
-    def __init__(self, hash_value, initdata):
-        self.hash = hash_value
+    def __init__(self, key, initdata):
+        self.key = key
         self.data = initdata
         self.next = None
 
-    def getHash(self):
-        return self.hash
+    def getKey(self):
+        return self.key
 
     def getData(self):
         return self.data
@@ -19,8 +19,8 @@ class Node:
     def getNext(self):
         return self.next
 
-    def setData(self, hashed_data, newdata):
-        self.hash = hashed_data
+    def setData(self, key, newdata):
+        self.key = key
         self.data = newdata
 
     def setNext(self, newnext):
@@ -35,8 +35,8 @@ class UnorderedList:
     def isEmpty(self):
         return self.head is None
 
-    def add(self, hash_value, item):
-        temp = Node(hash_value, item)
+    def add(self, key, item):
+        temp = Node(key, item)
         temp.setNext(self.head)
         self.head = temp
 
@@ -49,11 +49,11 @@ class UnorderedList:
 
         return count
 
-    def searchByHash(self, key):
+    def searchByKey(self, key):
         found = False
         current = self.head
         while current is not None and not found:
-            if current.getHash() == key:
+            if current.getKey() == key:
                 return current
             current = current.getNext()
 

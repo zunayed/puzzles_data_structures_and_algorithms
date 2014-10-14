@@ -37,19 +37,16 @@ class HashTable:
 
             # linked list to handle collisions
             ul = UnorderedList()
-            ul.add(hash_value, value)
+            ul.add(key, value)
             self.data[hash_value] = ul
         else:
             # slot is taken
-            import ipdb
-            ipdb.set_trace()
             existing_ul = self.data[hash_value]
-            existing_ul.add(hash_value, value)
+            existing_ul.add(key, value)
 
     def get(self, key):
         hash_value = self.hash_function(key, self.size)
-        if self.slots[hash_value] == key:
-            return self.data[hash_value].searchByHash(hash_value).getData()
+        return self.data[hash_value].searchByKey(key).getData()
 
 
 class MyTest(unittest.TestCase):
@@ -58,6 +55,7 @@ class MyTest(unittest.TestCase):
         self.ht = HashTable()
 
     def testHashFunc(self):
+
         self.ht[45] = 'sample'
         self.assertEqual(self.ht[45], 'sample')
 
