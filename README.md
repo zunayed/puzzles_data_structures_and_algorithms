@@ -6,7 +6,7 @@ Practicing w/ data structures in C++/Go/Python
 | Type          | Go    | Python | C++    |
 | ------------- | -----:| ------:| ------:|
 | Linked List   | No    | Done   |Done    |
-| Hash Table    | -     | -      |-       |
+| Hash Table    | -     | Done   |-       |
 | Stack         | -     | Done   |-       |
 | Queues        | -     | Done   |-       |
 | Tree          | -     | -      |-       |
