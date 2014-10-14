@@ -47,7 +47,7 @@ class UnorderedList:
         current = self.head
         while current is not None and not found:
             if current.getData() == item:
-                return current.getData()
+                return current
             current = current.getNext()
 
         return found
@@ -92,6 +92,9 @@ class TestLinkedList(unittest.TestCase):
         self.my_list.add(93)
         self.my_list.add(26)
         self.my_list.add(54)
+
+    def testSearch(self):
+        self.assertEqual(self.my_list.search(31).getData(), 31)
 
     def testSizeList(self):
         self.assertEqual(self.my_list.size(), 6)

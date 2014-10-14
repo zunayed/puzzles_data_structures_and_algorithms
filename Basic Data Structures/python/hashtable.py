@@ -1,5 +1,7 @@
 import unittest
 
+from hashtable_linked_list import UnorderedList
+
 
 class HashTable:
 
@@ -32,12 +34,22 @@ class HashTable:
         if self.slots[hash_value] is None:
             # Slot is open
             self.slots[hash_value] = key
-            self.data[hash_value] = value
+
+            # linked list to handle collisions
+            ul = UnorderedList()
+            ul.add(hash_value, value)
+            self.data[hash_value] = ul
+        else:
+            # slot is taken
+            import ipdb
+            ipdb.set_trace()
+            existing_ul = self.data[hash_value]
+            existing_ul.add(hash_value, value)
 
     def get(self, key):
         hash_value = self.hash_function(key, self.size)
         if self.slots[hash_value] == key:
-            return self.data[hash_value]
+            return self.data[hash_value].searchByHash(hash_value).getData()
 
 
 class MyTest(unittest.TestCase):
@@ -49,6 +61,12 @@ class MyTest(unittest.TestCase):
         self.ht[45] = 'sample'
         self.assertEqual(self.ht[45], 'sample')
 
+        self.ht[50] = 'sample2'
+        self.assertEqual(self.ht[50], 'sample2')
+
+        # collision case
+        self.ht[56] = 'sample3'
+        self.assertEqual(self.ht[56], 'sample3')
 
 if __name__ == '__main__':
     unittest.main()
