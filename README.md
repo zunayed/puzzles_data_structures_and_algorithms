@@ -11,7 +11,7 @@ Practicing w/ data structures & Algos in C++/Go/Python
 | Stack                 | -     | Done   |-       |
 | Queues                | -     | Done   |-       |
 | DeQueues              | -     | -      |-       |
-| Tree                  | -     | -      |-       |
+| Binary Tree           | -     | Done   |-       |
 | Bubble Sort           | -     | -      |-       |
 | Selection Sort        | -     | -      |-       |
 | Insertion Sort        | -     | -      |-       |
