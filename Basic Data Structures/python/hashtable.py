@@ -66,5 +66,9 @@ class MyTest(unittest.TestCase):
         self.ht[56] = 'sample3'
         self.assertEqual(self.ht[56], 'sample3')
 
+        # test old value
+        self.assertEqual(self.ht[50], 'sample2')
+
+
 if __name__ == '__main__':
     unittest.main()
