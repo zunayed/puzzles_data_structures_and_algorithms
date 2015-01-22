@@ -23,9 +23,8 @@ void reverse(char* str) {
 }
 
 int main() {
-	string s1 = "abcdefghij";
-	string s2 = "abcee329";
-	string s3 = "2921skj2";
-
-	return 0;
+    char s[] = "1234567890";
+    reverse(s);
+    cout << s;
+    return 0;
 }	
