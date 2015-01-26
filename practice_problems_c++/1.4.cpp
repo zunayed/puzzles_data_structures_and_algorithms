@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void replace_space(char *input, int size) {
+void replace_space(char* input, int size) {
     int num_of_spaces = 0;
     int new_size;
 
@@ -36,7 +36,7 @@ void replace_space(char *input, int size) {
 
 int main() {
 
-    char[] s = "hello ?";
+    string s  = "hello ?";
     replace_space(s);
     assert(s = "hello%20?");
     cout << s; 
