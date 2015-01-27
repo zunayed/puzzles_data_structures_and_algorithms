@@ -5,26 +5,24 @@
 
 using namespace std;
 
-void replace_space(char* input, int size) {
+void replace_space(char *input, int size) {
     int num_of_spaces = 0;
     int new_size;
 
     for(int i = 0; i < size; i++) { 
-        if(input[i] == " ") {
+        if(input[i] == ' ') {
             num_of_spaces++;
         }
     }    
 
     new_size = size + num_of_spaces * 2;
-    cout << input;
     input[new_size] = '\0';
-    cout << input;
 
     for(int i = size - 1; i > 0; i--) {
-        if (input[i] == " ") {
-            input[new_size - 1] = "0";
-            input[new_size - 2] = "2";
-            input[new_size - 3] = "3";
+        if (input[i] == ' ') {
+            input[new_size - 1] = '0';
+            input[new_size - 2] = '2';
+            input[new_size - 3] = '%';
 
             new_size = new_size - 3; 
         } else {
@@ -36,9 +34,8 @@ void replace_space(char* input, int size) {
 
 int main() {
 
-    string s  = "hello ?";
-    replace_space(s);
-    assert(s = "hello%20?");
-    cout << s; 
+    char test[50] = "Mr John  Smith ";
+    replace_space(test, strlen(test));
+    cout << test; 
     return 0;
  }	
