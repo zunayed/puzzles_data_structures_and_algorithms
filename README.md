@@ -1,7 +1,5 @@
-data_structures_and_algorithms
+# Practicing w/ data structures & Algos in C++/Go/Python
 ==============================
-
-Practicing w/ data structures & Algos in C++/Go/Python
 
 | Type                  | Go    | Python | C++    |
 | ----------------------| -----:| ------:| ------:|
@@ -19,6 +17,7 @@ Practicing w/ data structures & Algos in C++/Go/Python
 | Merge Sort            | -     | -      |-       |
 | Quick Sort            | -     | -      |-       |
 
+## CTCI
 
 | Question  | Python| c++    | 
 | ----------| -----:| ------:|
@@ -30,3 +29,17 @@ Practicing w/ data structures & Algos in C++/Go/Python
 | 1.6       | -     | -      |
 | 1.7       | -     | -      |
 | 1.8       | -     | Done   |
+| 2.1       | Done  | -      |
+| 2.2       | Done  | -      |
+| 2.3       | Done  | -      |
+| 2.4       | Done  | -      |
+| 2.5       | Done  | -      |
+| 2.6       | -     | -      |
+| 2.7       | -     | -      |
+| 3.1       | Done  | -      |
+| 3.2       | Done  | -      |
+| 3.3       | Done  | -      |
+| 3.4       | -     | -      |
+| 3.5       | -     | -      |
+| 3.6       | -     | -      |
+| 3.7       | -     | -      |
