@@ -19,3 +19,14 @@ Practicing w/ data structures & Algos in C++/Go/Python
 | Merge Sort            | -     | -      |-       |
 | Quick Sort            | -     | -      |-       |
 
+
+| Question  | Python| c++    | 
+| ----------| -----:| ------:|
+| 1.1       | Done  | Done   |
+| 1.2       | Done  | Done   |
+| 1.3       | Done  | Done   |
+| 1.4       | Done  | Done   |
+| 1.5       | Done  | Done   |
+| 1.6       | -     | -      |
+| 1.7       | -     | -      |
+| 1.8       | -     | Done   |
