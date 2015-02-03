@@ -4,9 +4,11 @@
 #include <cstdlib>
 #include <iostream>
 
+using namespace std;
+
 
 class List{
-private:
+public:
     struct node{
         int data;
         node* next_node;   
@@ -15,15 +17,13 @@ private:
     node* head;
     node* current;
     node* temp;
-
-public:
+    
     List();
     void PrintList(); 
     void AddNode(int add_data);
     void DeleteNode(int del_data);
 };
 
-using namespace std;
 
 List::List(){
     head = NULL;
