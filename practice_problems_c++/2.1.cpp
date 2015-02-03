@@ -1,16 +1,15 @@
+#include <typeinfo>
 #include "data_structures/linked_list.h"
 
-void remove_dupes(List ll){
-    if (ll.head->next_node == NULL)
+void remove_dupes(List::node* head){
+    if (head->next_node == NULL)
         return;
 
-    List::node* current = ll.head;
-    while (current->next_node != NULL){
+    List::node* current = head;
+    while (current != NULL){
         List::node* checker = current;
         while (checker->next_node != NULL){
             if (checker->next_node->data == current->data){
-                cout << "Found Duplicate\n";
-                cout << checker->next_node->next_node;
                 checker->next_node = checker->next_node->next_node;
             } else {
                 checker = checker->next_node;
@@ -18,23 +17,21 @@ void remove_dupes(List ll){
         }
         current = current->next_node;
     }
-
-    ll.PrintList();
 }
 
 int main(){
     List Test;
 
+    cout << "----Before remove function----" << endl;
     Test.AddNode(9);
     Test.AddNode(1);
     Test.AddNode(4);
     Test.AddNode(3);
+    Test.AddNode(9);
     Test.AddNode(3);
     Test.PrintList();
-    cout << "----Before remove function----" << endl;
-    remove_dupes(Test);
-    //cout << "----after remove function----" << endl;
-    //Test.PrintList();
-
+    remove_dupes(Test.head);
+    cout << "----after remove function----" << endl;
+    Test.PrintList();
 
 }
