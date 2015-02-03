@@ -1,13 +1,13 @@
 #include <typeinfo>
 #include "data_structures/linked_list.h"
 
-void remove_dupes(List::node* head){
+void remove_dupes(List::Node* head){
     if (head->next_node == NULL)
         return;
 
-    List::node* current = head;
+    List::Node* current = head;
     while (current != NULL){
-        List::node* checker = current;
+        List::Node* checker = current;
         while (checker->next_node != NULL){
             if (checker->next_node->data == current->data){
                 checker->next_node = checker->next_node->next_node;

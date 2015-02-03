@@ -8,17 +8,15 @@ using namespace std;
 
 
 class List{
-private:
-    struct node{
+public: 
+
+    struct Node{
         int data;
-        node* next_node;   
+        Node* next_node;   
     };
 
-    node* head;
-    node* current;
-    node* temp;
+    Node* head;
 
-public: 
     List();
     void PrintList(); 
     void AddNode(int add_data);
@@ -28,12 +26,12 @@ public:
 
 List::List(){
     head = NULL;
-    current = NULL;
-    temp = NULL;
 }
 
 void List::AddNode(int data){
-    node* n = new node;
+    Node* n = new Node;
+    Node* current;
+
     n->next_node = NULL;
     n->data = data;
 
@@ -51,9 +49,9 @@ void List::AddNode(int data){
 
 
 void List::DeleteNode(int del_data){
-    temp = head;
-    current = head;
-    node* pointer_to_delete = NULL;
+    Node* temp = head;
+    Node* current = head;
+    Node* pointer_to_delete = NULL;
 
     while(current != NULL && current->data != del_data){
         temp = current;
@@ -62,7 +60,6 @@ void List::DeleteNode(int del_data){
 
     if(current == NULL){
         cout << "element not  found";
-        delete pointer_to_delete;
     }
     else {
         //found the data to delete
@@ -81,7 +78,7 @@ void List::DeleteNode(int del_data){
 }
 
 void List::PrintList(){
-    current = head;
+    Node* current = head;
     while(current != NULL){
         cout << current->data << endl;
         current = current->next_node;
