@@ -8,7 +8,7 @@ using namespace std;
 
 
 class List{
-public:
+private:
     struct node{
         int data;
         node* next_node;   
@@ -17,7 +17,8 @@ public:
     node* head;
     node* current;
     node* temp;
-    
+
+public: 
     List();
     void PrintList(); 
     void AddNode(int add_data);
