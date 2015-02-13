@@ -18,14 +18,18 @@ void delete_node_from_middle (List::Node* n){
 int main(){
     List Test;
     
-
-    Test.AddNode(9);
     Test.AddNode(1);
+    Test.AddNode(2);
+    Test.AddNode(3);
     Test.AddNode(4);
-    Test.AddNode(3);
-    Test.AddNode(7);
-    Test.AddNode(3);
+    Test.AddNode(5);
+    Test.AddNode(6);
     Test.PrintList();
-    delete_node_from_middle(
+
+    // get a middle node
+    List::Node* middle = Test.head->next_node->next_node->next_node;
+    delete_node_from_middle(middle);
+    std::cout << "After deleting middle node\n";
+    Test.PrintList();
 
 }
