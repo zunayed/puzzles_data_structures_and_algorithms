@@ -6,7 +6,7 @@ class SingleArrayStacks(object):
 
     def __init__(self, array_size=100, number=3):
         self.array = [None] * array_size
-        self.pointer = [-1, -1, -1]
+        self.pointer = [-1] * number
         self.stack_size = array_size // number
 
     def get_top_position(self, stack_number):
