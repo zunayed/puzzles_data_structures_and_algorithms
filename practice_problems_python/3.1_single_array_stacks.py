@@ -1,51 +1,68 @@
-#implement 3 stacks with a single array
+# implement 3 stacks with a single array
+import unittest
 
 
 class SingleArrayStacks(object):
-    def __init__(self, stacksize=100, number=3):
-        self.stacksize = stacksize
-        self.number = number
-        self.array = [None] * self.stacksize * self.number
-        self.pointer = [-1] * self.number
 
-    def push(self, stacknum, value):
-        if self.pointer[stacknum] + 1 >= self.stacksize:
-            print "Out of space"
+    def __init__(self, array_size=100, number=3):
+        self.array = [None] * array_size
+        self.pointer = [-1, -1, -1]
+        self.stack_size = array_size // number
+
+    def get_top_position(self, stack_number):
+        return stack_number * self.stack_size + self.pointer[stack_number]
+
+    def push(self, stack_number, val):
+        if self.pointer[stack_number] < self.stack_size - 1:
+            self.array[self.get_top_position(stack_number) + 1] = val
+            self.pointer[stack_number] += 1
+
         else:
-            self.pointer[stacknum] += 1
-            self.array[self.stacktop(stacknum)] = value
+            return "Stack full"
 
-    def pop(self, stacknum):
-        if self.pointer[stacknum] < 0:
-            return "Trying to pop an empty stack."
-        else:
-            data = self.array[self.stacktop(stacknum)]
-            self.array[self.stacktop(stacknum)] = None
-            self.pointer[stacknum] -= 1
-            return data
+    def pop(self, stack_number):
+        if self.pointer[stack_number] == -1:
+            return 'Stack is empty'
 
-    def peek(self, stacknum):
-        if self.pointer[stacknum] < 0:
-            print "Empty stack"
-        else:
-            return self.array[self.stacktop(stacknum)]
+        pop_val = self.array[self.get_top_position(stack_number)]
+        self.array[self.get_top_position(stack_number)] = None
+        self.pointer[stack_number] -= 1
 
-    def isEmpty(self, stacknum):
-        return self.pointer[stacknum] == -1
+        return pop_val
 
-    def stacktop(self, stacknum):
-        return self.stacksize * stacknum + self.pointer[stacknum]
 
-#-----------------test-----------------
+class StackTests(unittest.TestCase):
+
+    def test_push_pop(self):
+        self.array = SingleArrayStacks()
+        self.assertEqual('Stack is empty', self.array.pop(0))
+
+        self.array.push(0, 1)
+        self.array.push(0, 2)
+        self.array.push(0, 3)
+
+        self.assertEqual(3, self.array.pop(0))
+        self.assertEqual(2, self.array.pop(0))
+        self.assertEqual(1, self.array.pop(0))
+
+        self.array.push(1, 1)
+        self.array.push(2, 1)
+        self.array.push(2, 2)
+        self.array.push(2, 3)
+
+        self.assertEqual(3, self.array.pop(2))
+        self.assertEqual(2, self.array.pop(2))
+        self.assertEqual(1, self.array.pop(2))
+        self.assertEqual(1, self.array.pop(1))
+
+    def test_stack_full(self):
+        self.array = SingleArrayStacks(array_size=9)
+        self.array.push(2, 1)
+        self.array.push(2, 2)
+        self.array.push(2, 3)
+
+        self.assertEqual('Stack full', self.array.push(2, 4))
+
+
 if __name__ == "__main__":
-    array = SingleArrayStacks()
-    array.push(2, 11)
-    array.push(2, 13)
-    print array.pop(0)   # Trying to pop an empty stack.
-    print array.peek(2)  # 13
-    array.push(0, 20)
-    array.push(0, 30)
-    print array.pop(0)   # 30
-    print array.peek(0)  # 20
-
-
+    unittest.main()
