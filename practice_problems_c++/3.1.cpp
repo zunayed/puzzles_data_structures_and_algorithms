@@ -1,6 +1,5 @@
 // Implment a stack with one array 
 #include <iostream>
-using namespace std;
 
 
 class SingleArrayStacks{
@@ -17,8 +16,8 @@ class SingleArrayStacks{
             array = new int[array_size];    
             pointer = new int[num_stacks]; 
             stack_size =  array_size / num_stacks;
-            fill_n(array, array_size, NULL);
-            fill_n(pointer, num_stacks, -1);
+            std::fill_n(array, array_size, NULL);
+            std::fill_n(pointer, num_stacks, -1);
         }
 
         ~SingleArrayStacks (){
@@ -27,18 +26,18 @@ class SingleArrayStacks{
         }
 
         void print_stack(int stack_num){
-            cout << "Current stack state: ";
+            std::cout << "Current stack state: ";
             for (int i = 0; i < sizeof(array); i++) {
-                cout << array[i];
+                std::cout << array[i];
             }
-            cout << endl;
+            std::cout << std::endl;
         }
 
         void push (int stack_num, int val){
             if (pointer[stack_num] > stack_size) {
-                std:cout << "Stack Full \n"; 
+                std::cout << "Stack Full \n"; 
             } else {
-                cout << "Pushing: " << val;
+                std::cout << "Pushing: " << val;
                 array[get_top_position(stack_num) + 1] = val;
                 pointer[stack_num]++;
             }
@@ -49,7 +48,7 @@ class SingleArrayStacks{
             if (pointer[stack_num] == -1) {
                 return NULL;
             } else {
-                cout << "Poping from stack: " << stack_num << endl;
+                std::cout << "Poping from stack: " << stack_num << std::endl;
                 print_stack(stack_num);
                 int val = array[get_top_position(stack_num)];
                 array[get_top_position(stack_num)] = NULL;
@@ -64,18 +63,18 @@ int main() {
     SingleArrayStacks array(91, 3); 
     array.push(0, 7);
     array.push(0, 4);
-    cout << "Poping vals \n";
-    cout << array.pop(0) << endl;   // 2 
-    cout << array.pop(0) << endl;   // 1
+    std::cout << "Poping vals \n";
+    std::cout << array.pop(0) << std::endl;  
+    std::cout << array.pop(0) << std::endl; 
 
     array.push(0, 1);
     array.push(0, 2);
     array.push(2, 4);
     array.push(2, 6);
 
-    cout << array.pop(2) << endl;   // 6
-    cout << array.pop(0) << endl;   // 2
-    cout << array.pop(2) << endl;   // 4
-    cout << array.pop(2) << endl;   // 0
+    std::cout << array.pop(2) << std::endl;
+    std::cout << array.pop(0) << std::endl; 
+    std::cout << array.pop(2) << std::endl;
+    std::cout << array.pop(2) << std::endl;
     
 }
