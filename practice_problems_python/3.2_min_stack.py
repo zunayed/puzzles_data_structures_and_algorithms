@@ -1,43 +1,47 @@
 # implement a stack which, in addition to push and pop also has a
 # function min which returns the minimum element? Push pop and min
 # should all operate in O(1) time
+import unittest
 
 
-class Stack:
+class StackWithMin:
     def __init__(self):
         self.items = []
+        self.min_items = []
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.items == []
 
     def push(self, item):
-        #store value + min value as tuple
-        if self.items == [] or item < self.items[-1][1]:
-            #if no values in stack or if there is a new minimum
-            self.items.append((item, item))
-        else:
-            self.items.append((item, self.items[-1][1]))
+        self.items.append(item)
+        if len(self.min_items) == 0 or item < self.min_items[-1]:
+            self.min_items.append(item)
 
     def pop(self):
-        return self.items.pop()[0]
+        popped_item = self.items.pop()
+        if popped_item == self.get_min():
+            self.min_items.pop()
+        return popped_item
 
-    def peek(self):
-        return self.items[len(self.items) - 1]
-
-    def size(self):
-        return len(self.items)
-
-    def getMin(self):
+    def get_min(self):
         if len(self.items) == 0:
             return None
+        return self.min_items[-1]
 
-        return self.items[-1][1]
 
-stack = Stack()
-stack.push(432)
-stack.push(53)
-stack.push(99)
-stack.push(533)
-stack.push(521)
+class MinStackTests(unittest.TestCase):
+ 
+    def test_min_val(self):
+        self.stack = StackWithMin()
+        self.stack.push(432)
+        self.stack.push(53)
+        self.stack.push(53)
+        self.stack.push(99)
+        self.stack.push(533)
+        self.stack.push(521)
+        
+        self.assertEqual(53, self.stack.get_min())
 
-print stack.getMin()
+
+if __name__ == "__main__":
+    unittest.main()
