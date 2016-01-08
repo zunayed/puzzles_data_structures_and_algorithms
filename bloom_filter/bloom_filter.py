@@ -1,3 +1,6 @@
+# TODO
+# Need 7 hash functions for an optimal bloom filter
+# get more hash functions ? use a combination of 2 hash functions
 import re
 import sys
 import math
