@@ -7,7 +7,7 @@ import math
 import hashlib
 
 import bitarray
-
+import mmh3
 
 def fnv32a(input_string):
     input_string = input_string.decode('utf-8')
@@ -36,6 +36,15 @@ def calc_optimal_hash_func(lenght_of_entries):
     return k
 
 
+def lookup(string, bit_array, seeds):
+    for seed in xrange(seeds):
+        result = abs(mmh3.hash(string, seed)) % len(size)
+        if bit_array[result] == 0:
+            return "Nope"
+
+    return "Probably"
+
+
 def load_words():
     word_loc = '/usr/share/dict/words'
     data = []
@@ -49,17 +58,15 @@ def load_words():
 def main():
     words       = load_words()
     w_length    = len(words)
+    seeds       = calc_optimal_hash_func(w_length)
     bit_array   = w_length * bitarray.bitarray('0')
 
     for word in words:
         word = word.encode()
-        pos1 = fnv32a(word) % w_length
-        pos2 = sha1(word) % w_length
-        bit_array[pos1] = 1
-        bit_array[pos2] = 1
+        for seed in range(seeds):
+            pos = abs(mmh3.hash(word, seed)) % w_length
+            bit_array[pos] = 1
 
-    optimal = calc_optimal_hash_func(w_length)
-    import ipdb;ipdb.set_trace()
 
 if __name__ == '__main__':
     main()
