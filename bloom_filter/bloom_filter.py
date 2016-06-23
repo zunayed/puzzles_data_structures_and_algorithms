@@ -1,8 +1,3 @@
-# TODO
-# Need 7 hash functions for an optimal bloom filter
-# get more hash functions ? use a combination of 2 hash functions
-import re
-import sys
 import math
 import hashlib
 
@@ -18,9 +13,8 @@ def calc_optimal_hash_func(lenght_of_entries):
 
 
 def lookup(string, bit_array, seeds):
-    #import ipdb;ipdb.set_trace()
     for seed in range(seeds):
-        result = abs(mmh3.hash(string, seed)) % len(bit_array)
+        result = mmh3.hash(string, seed) % len(bit_array)
         if bit_array[result] == 0:
             return "nope"
 
@@ -28,8 +22,9 @@ def lookup(string, bit_array, seeds):
 
 
 def load_words():
-    word_loc = '/usr/share/dict/words'
-    data = []
+    data        = []
+    word_loc    = '/usr/share/dict/words'
+
     with open(word_loc, 'r') as f:
         for word in f.readlines():
             data.append(word)
@@ -46,7 +41,7 @@ def get_bit_array():
     for word in words:
         word = word.encode()
         for seed in range(seeds):
-            pos = abs(mmh3.hash(word, seed)) % w_length
+            pos = mmh3.hash(word, seed) % w_length
             bit_array[pos] = 1
 
     return seeds, bit_array
