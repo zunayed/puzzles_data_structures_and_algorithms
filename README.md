@@ -8,7 +8,7 @@
 | Hash Table            | -     | Done   |-       |
 | Stack                 | -     | Done   |-       |
 | Queues                | -     | Done   |-       |
-| DeQueues              | -     | -      |-       |
+| DeQueues              | -     | Done   |-       |
 | Binary Tree           | -     | Done   |-       |
 | Bubble Sort           | -     | -      |-       |
 | Selection Sort        | -     | -      |-       |
@@ -16,10 +16,11 @@
 | Shell Sort            | -     | -      |-       |
 | Merge Sort            | -     | -      |-       |
 | Quick Sort            | -     | -      |-       |
+| Bloom filter          | -     | -      |-       |
 
 ## CTCI
 
-| Question  | Python| c++    | 
+| Question  | Python| c++    |
 | ----------| -----:| ------:|
 | 1.1       | Done  | Done   |
 | 1.2       | Done  | Done   |
