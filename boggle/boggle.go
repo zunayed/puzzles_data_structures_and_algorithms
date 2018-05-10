@@ -44,9 +44,9 @@ func (b boggleBoard) pprint() {
 }
 
 func matchWord(wordsToSearch []string, word string) bool {
-	fmt.Printf("checking word %s", word)
+	//fmt.Printf("checking word %s \n", word)
 
-	for i, w := range wordsToSearch {
+	for _, w := range wordsToSearch {
 		if w == word {
 			return true
 		}
@@ -55,24 +55,31 @@ func matchWord(wordsToSearch []string, word string) bool {
 	return false
 }
 
-func findWords(wordsToLookFor []string, board *boggleBoard, seen_words *[][]bool, curX, curY int, word string) {
+func findWords(wordsToLookFor []string, board *boggleBoard, seen_words *[][]bool, curY, curX int, word string) {
 	/*
 		if curX > board.sizeX-1 || curY > board.sizeY {
 			return
 		}
 	*/
 
-	*(seen_words)[curX][curY] = true
-	word = fmt.Sprintf("%s%s", word, board.data[curX][curY])
+	//fmt.Printf("POS - %d, %d \n", curY, curX)
+
+	(*seen_words)[curY][curX] = true
+	word = fmt.Sprintf("%s%s", word, board.data[curY][curX])
 
 	if matchWord(wordsToLookFor, word) {
 		fmt.Println("FOUND WORD", word)
 	}
 
-	for row := curX - 1; row <= curX+1 && row < board.sizeX; row++ {
-		for col = curY - 1; col <= curY+1 && col < board.sizeY; col++ {
-			if row >= 0 && col >= 0 && !seen_words[row][col] {
-				findWordsUtil(wordsToLookFor, board, &seen_words, row, col, word)
+	// row = Y col = X
+
+	for row := curY - 1; row <= curY+1 && row < board.sizeY; row++ {
+		for col := curX - 1; col <= curX+1 && col < board.sizeX; col++ {
+
+			//fmt.Printf("Pre check - %d, %d \n", row, col)
+			if row >= 0 && col >= 0 && !(*seen_words)[row][col] {
+				// fmt.Printf("post check - %d, %d \n", row, col)
+				findWords(wordsToLookFor, board, seen_words, row, col, word)
 			}
 		}
 	}
@@ -84,28 +91,26 @@ func main() {
 	board.sizeY = 4
 	board.data = [][]string{
 		{"h", "o", "a", "y", "o"},
-		{"b", "s", "a", "b", "v"},
-		{"z", "b", "p", "e", "s"},
-		{"v", "n", "p", "l", "q"},
+		{"b", "i", "z", "b", "v"},
+		{"u", "b", "p", "e", "s"},
+		{"q", "n", "p", "l", "q"},
 	}
 
 	board.pprint()
+	word := ""
 
-	seen_words := make([][]bool, boggleSizeY)
+	wordsToLookFor := []string{"apple", "bad", "yo", "geek"}
+	seen_words := make([][]bool, board.sizeY)
 	//fmt.Println(seen_words)
 
 	// prepare seen word storage
 	for i := range seen_words {
-		seen_words[i] = make([]bool, sizeY)
+		seen_words[i] = make([]bool, board.sizeX)
 	}
 
-	word := ""
-
-	wordsToLookFor := []string{"apple", "bad", "yo"}
-
-	for x = 0; x < board.sizeX; x++ {
-		for y = 0; y < board.sizey; y++ {
-			findWords(wordsToLookFor, board, &seen_words, i, j, word)
+	for y := 0; y < board.sizeY; y++ {
+		for x := 0; x < board.sizeX; x++ {
+			findWords(wordsToLookFor, &board, &seen_words, y, x, word)
 		}
 	}
 }
