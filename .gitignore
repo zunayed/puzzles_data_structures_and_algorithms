@@ -1,5 +1,6 @@
 *.pyc
 *.out
 *.ropeproject/
+.DS_Store
 
 *.ipynb_checkpoints/
