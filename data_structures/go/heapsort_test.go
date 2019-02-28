@@ -5,10 +5,13 @@ import (
 	"testing"
 )
 
-func TestQuickSort(t *testing.T) {
+func TestHeapSort(t *testing.T) {
 	var testCases = [][]int{
+		{1},
+		{},
 		{5, 4},
 		{2, 99, 1},
+		{999, 2, 1, -2},
 	}
 
 	for _, tt := range testCases {
@@ -16,7 +19,7 @@ func TestQuickSort(t *testing.T) {
 		tmp := make([]int, len(tt))
 		copy(tmp, tt)
 
-		quickSort(tmp, 0, len(tmp)-1)
+		heapSort(tmp, len(tmp))
 		sort.Sort(sort.IntSlice(tt))
 		if !equal(tmp, tt) {
 			t.Errorf("Invalid result custom_sort: %v, want: %v.", tmp, tt)
