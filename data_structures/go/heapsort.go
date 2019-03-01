@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 // n = size, i = index of ie node at i
 func heapify(arr []int, size, nodePos int) {
 	largest := nodePos
@@ -73,16 +69,4 @@ func heapSortMax(arr []int, size int) {
 		swap(arr, 0, i)
 		heapify(arr, i, 0)
 	}
-}
-
-func main() {
-	tc := []int{99, 212, 23, 3, 1, 10}
-	tcForMinHeap := make([]int, len(tc))
-	copy(tcForMinHeap, tc)
-
-	heapSortMax(tc, len(tc))
-	fmt.Printf("%v\n", tc)
-
-	heapSortMin(tcForMinHeap, len(tcForMinHeap))
-	fmt.Printf("%v\n", tc)
 }

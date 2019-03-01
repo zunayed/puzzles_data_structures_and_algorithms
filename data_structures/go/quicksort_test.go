@@ -20,7 +20,7 @@ func TestQuickSort(t *testing.T) {
 		tmp := make([]int, len(tt))
 		copy(tmp, tt)
 
-		quickSort(tmp, 0, len(tmp)-1)
+		quickSort(tmp, 0, len(tmp))
 		sort.Sort(sort.IntSlice(tt))
 		if !Equal(tmp, tt) {
 			t.Errorf("Invalid result custom_sort: %v, want: %v.", tmp, tt)

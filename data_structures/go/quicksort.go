@@ -42,11 +42,10 @@ func partition(arr []int, start, stop, pivot int) int {
 */
 
 // Lomuto partition method
-// TODO understand the stop-1
 func partition(arr []int, start, stop int) int {
 	pivot_val := arr[stop]
 
-	for current := start; current < stop-1; current++ {
+	for current := start; current < stop; current++ {
 		if arr[current] <= pivot_val {
 			// swap arr[current] with arr[start]
 			arr[current], arr[start] = arr[start], arr[current]
@@ -60,7 +59,7 @@ func partition(arr []int, start, stop int) int {
 }
 
 func quickSort(arr []int, start, stop int) {
-	if (start == stop) || (start > stop) {
+	if start >= stop {
 		return
 	}
 
