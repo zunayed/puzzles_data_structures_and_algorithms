@@ -5,32 +5,67 @@ import (
 )
 
 // n = size, i = index of ie node at i
-func heapify(arr []int, n, i int) {
-	largest := i
-	left := 2*i + 1
-	right := 2*i + 2
+func heapify(arr []int, size, nodePos int) {
+	largest := nodePos
+	left := 2*nodePos + 1
+	right := 2*nodePos + 2
 
 	// if left child is larger then root
-	if left < n && arr[left] > arr[largest] {
+	if left < size && arr[left] > arr[largest] {
 		largest = left
 	}
 
 	// if right child is larger then root
-	if right < n && arr[right] > arr[largest] {
+	if right < size && arr[right] > arr[largest] {
 		largest = right
 	}
 
 	// if largest is not root
-	if largest != i {
+	if largest != nodePos {
 		// swap
-		swap(arr, i, largest)
+		swap(arr, nodePos, largest)
 
 		// recurse
-		heapify(arr, n, largest)
+		heapify(arr, size, largest)
 	}
 }
-func heapSort(arr []int, size int) {
-	for i := (size/2 - 1); i >= 0; i-- {
+
+func heapifyMin(arr []int, size, nodePos int) {
+	smallest := nodePos
+	left := 2*nodePos + 1
+	right := 2*nodePos + 2
+
+	if left < size && arr[left] < arr[smallest] {
+		smallest = left
+	}
+
+	if right < size && arr[right] < arr[smallest] {
+		smallest = right
+	}
+
+	if nodePos != smallest {
+		swap(arr, nodePos, smallest)
+
+		// recursively heapify now
+		heapifyMin(arr, size, smallest)
+	}
+}
+
+func heapSortMin(arr []int, size int) {
+	// populate min heap
+	for i := size; i >= 0; i-- {
+		heapifyMin(arr, size, i)
+	}
+
+	// now rearrange array with min values on the right side
+	for i := (size - 1); i >= 0; i-- {
+		swap(arr, 0, i)
+		heapifyMin(arr, i, 0)
+	}
+}
+
+func heapSortMax(arr []int, size int) {
+	for i := (size - 1); i >= 0; i-- {
 		heapify(arr, size, i)
 	}
 
@@ -42,7 +77,12 @@ func heapSort(arr []int, size int) {
 
 func main() {
 	tc := []int{99, 212, 23, 3, 1, 10}
-	// tc := []int{199, 212}
-	heapSort(tc, len(tc))
-	fmt.Printf("%v", tc)
+	tcForMinHeap := make([]int, len(tc))
+	copy(tcForMinHeap, tc)
+
+	heapSortMax(tc, len(tc))
+	fmt.Printf("%v\n", tc)
+
+	heapSortMin(tcForMinHeap, len(tcForMinHeap))
+	fmt.Printf("%v\n", tc)
 }

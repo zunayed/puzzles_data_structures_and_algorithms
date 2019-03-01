@@ -21,7 +21,7 @@ func TestHeapSort(t *testing.T) {
 
 		heapSort(tmp, len(tmp))
 		sort.Sort(sort.IntSlice(tt))
-		if !equal(tmp, tt) {
+		if !Equal(tmp, tt) {
 			t.Errorf("Invalid result custom_sort: %v, want: %v.", tmp, tt)
 		}
 	}

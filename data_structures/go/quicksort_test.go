@@ -7,6 +7,10 @@ import (
 
 func TestQuickSort(t *testing.T) {
 	var testCases = [][]int{
+		{0, 0, 1},
+		{-8, 0, 1},
+		{1},
+		{},
 		{5, 4},
 		{2, 99, 1},
 	}
@@ -18,7 +22,7 @@ func TestQuickSort(t *testing.T) {
 
 		quickSort(tmp, 0, len(tmp)-1)
 		sort.Sort(sort.IntSlice(tt))
-		if !equal(tmp, tt) {
+		if !Equal(tmp, tt) {
 			t.Errorf("Invalid result custom_sort: %v, want: %v.", tmp, tt)
 		}
 	}
