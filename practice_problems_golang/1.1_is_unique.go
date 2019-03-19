@@ -20,7 +20,3 @@ func isUnique(s string) bool {
 
 	return true
 }
-
-func main() {
-	isUnique("")
-}

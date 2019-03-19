@@ -5,7 +5,7 @@ import (
 	"math/rand"
 )
 
-func swap(arr []int32, i, j int) {
+func swap32(arr []int32, i, j int) {
 	arr[i], arr[j] = arr[j], arr[i]
 }
 
@@ -23,17 +23,17 @@ func partition(arr []int32, start, stop int, pivot int32) int {
 	i, j := start, start
 	for j < stop {
 		if arr[j] < pivot {
-			swap(arr, i, j)
+			swap32(arr, i, j)
 			i++
 			j++
 		} else if arr[j] == pivot {
-			swap(arr, j, stop)
+			swap32(arr, j, stop)
 		} else {
 			j += 1
 		}
 	}
 
-	swap(arr, i, stop)
+	swap32(arr, i, stop)
 	return i
 
 }

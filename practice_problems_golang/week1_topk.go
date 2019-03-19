@@ -1,12 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
-
-func swap(arr []int, a, b int) {
-	arr[a], arr[b] = arr[b], arr[a]
-}
+// import "fmt"
 
 func heapify(arr []int, size, nodePos int) {
 	largest := nodePos
@@ -57,7 +51,9 @@ func topK(arr []int, k int) []int {
 	return arr[arrSize-k:]
 }
 
+/*
 func main() {
 	arr := []int{5, 8, 1, 2, 3, 4, 0, 6, 7, -1}
 	fmt.Printf("%v", topK(arr, 4))
 }
+*/

@@ -20,7 +20,7 @@ var nutsBoltsTestCases = []struct {
 	},
 }
 
-func TestCompress(t *testing.T) {
+func TestNutsBolts(t *testing.T) {
 	for _, tt := range nutsBoltsTestCases {
 		result := matchNutsBolts(tt.nuts, tt.bolts)
 		if !reflect.DeepEqual(result, tt.out) {
