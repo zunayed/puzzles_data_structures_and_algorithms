@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -12,5 +13,7 @@ func TestPrintEvenOddPerm(t *testing.T) {
 	}
 	for _, tt := range permTestCase {
 		printEvenOddPerm(tt.in, 0)
+		fmt.Println("----------")
+		printEvenOddPermBetter(tt.in, 0)
 	}
 }
