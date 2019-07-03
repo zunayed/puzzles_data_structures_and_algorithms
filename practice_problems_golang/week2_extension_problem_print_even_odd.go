@@ -68,8 +68,6 @@ func printEvenOddPermBetter(input []int, i int) {
 	}
 }
 
-/*
 func main() {
 	printEvenOddPerm([]int{1, 3, 5, 2, 4, 6}, 0)
 }
-*/
