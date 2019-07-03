@@ -9,40 +9,11 @@
 | Stack                 | -     | Done   |-       |
 | Queues                | -     | Done   |-       |
 | DeQueues              | -     | Done   |-       |
-| Binary Tree           | -     | Done   |-       |
+| Binary Tree           | Done  | Done   |-       |
 | Bubble Sort           | -     | -      |-       |
 | Selection Sort        | -     | -      |-       |
 | Insertion Sort        | -     | -      |-       |
 | Shell Sort            | -     | -      |-       |
-| Merge Sort            | -     | -      |-       |
-| Quick Sort            | -     | -      |-       |
-| Bloom filter          | -     | -      |-       |
-
-## CTCI
-
-| Question  | Python| c++    |
-| ----------| -----:| ------:|
-| 1.1       | Done  | Done   |
-| 1.2       | Done  | Done   |
-| 1.3       | Done  | Done   |
-| 1.4       | Done  | Done   |
-| 1.5       | Done  | Done   |
-| 1.6       | -     | -      |
-| 1.7       | -     | -      |
-| 1.8       | Done  | Done   |
-| 2.1       | Done  | Done   |
-| 2.2       | Done  | Done   |
-| 2.3       | Done  | Done   |
-| 2.4       | Done  | Done   |
-| 2.5       | Done  | -      |
-| 2.6       | -     | -      |
-| 2.7       | -     | -      |
-| 3.1       | Done  | Done   |
-| 3.2       | Done  | Done   |
-| 3.3       | Done  | -      |
-| 3.4       | -     | -      |
-| 3.5       | -     | -      |
-| 3.6       | -     | -      |
-| 3.7       | -     | -      |
-| 3.8       | -     | -      |
-
+| Merge Sort            | Done  | -      |-       |
+| Quick Sort            | Done  | -      |-       |
+| Bloom filter          | -     | Done   |-       |
